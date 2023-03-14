@@ -1,5 +1,6 @@
 FROM adoptopenjdk:11-jdk-hotspot
-COPY build/libs/*.jar app.jar
+ARG JAR_FILE=./build/libs/musicalender-project-0.0.1-SNAPSHOT.jar
+COPY ${JAR_FILE} app.jar
 EXPOSE 5000
 ENV TZ=Asia/Seoul
 RUN apt-get update && apt-get install -y tzdata && \
