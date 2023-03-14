@@ -70,7 +70,7 @@ jobs:
           aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           application_name: musicalender-project-server
           environment_name: MusicalenderDocker
-          version_label: earth-docker-${{steps.current-time.outputs.formattedTime}}
+          version_label: musicalender-docker-${{steps.current-time.outputs.formattedTime}}
           region: ap-northeast-2
           deployment_package: deploy/deploy.zip
           wait_for_environment_recovery: 200
