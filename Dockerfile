@@ -1,5 +1,5 @@
 FROM adoptopenjdk:11-jdk-hotspot
-ARG JAR_FILE=build/libs/*.jar
+ARG JAR_FILE=./build/libs/musicalender-project-0.0.1-SNAPSHOT.jar
 COPY ${JAR_FILE} app.jar
 EXPOSE 5000
 ENV TZ=Asia/Seoul

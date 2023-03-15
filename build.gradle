@@ -30,6 +30,12 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
+bootJar {
+	from('.ebextensions') {
+		into('.ebextensions' )
+	}
+}
+
 tasks.named('test') {
 	useJUnitPlatform()
 }
