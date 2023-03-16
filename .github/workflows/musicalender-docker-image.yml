@@ -1,4 +1,3 @@
-# test
 name: Upload Docker Image to ECR & Pull Image to Beanstalk
 
 on:
