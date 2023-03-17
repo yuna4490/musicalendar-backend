@@ -2,7 +2,6 @@
 name: Upload Docker Image to ECR & Pull Image to Beanstalk
 
 on:
-  pull_request:
   push:
     branches: [ master ]
 
