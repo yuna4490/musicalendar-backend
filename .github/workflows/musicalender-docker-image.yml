@@ -1,4 +1,4 @@
-# 단일 인스턴스로 변경
+# 단일 인스턴스로 변경 제발..
 name: Upload Docker Image to ECR & Pull Image to Beanstalk
 
 on:
