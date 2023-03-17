@@ -1,4 +1,4 @@
-# jar 파일 지우고 다시 시도
+# 단일 인스턴스로 변경
 name: Upload Docker Image to ECR & Pull Image to Beanstalk
 
 on:
