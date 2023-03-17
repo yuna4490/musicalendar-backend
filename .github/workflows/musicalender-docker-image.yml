@@ -1,3 +1,4 @@
+# jar 파일 지우고 다시 시도
 name: Upload Docker Image to ECR & Pull Image to Beanstalk
 
 on:
