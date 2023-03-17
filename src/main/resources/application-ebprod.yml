@@ -5,6 +5,7 @@ spring:
     password: ${rds.password}
     driver-class-name: ${rds.driver}
 
+
   jpa:
     #    show-sql: true
     properties:
