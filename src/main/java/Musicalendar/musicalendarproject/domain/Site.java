@@ -1,4 +1,4 @@
-package Musicalender.musicalenderproject.domain;
+package Musicalendar.musicalendarproject.domain;
 
 public enum Site {
     멜론티켓, 예술의전당,

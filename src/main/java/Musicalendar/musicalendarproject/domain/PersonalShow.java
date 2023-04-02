@@ -1,4 +1,4 @@
-package Musicalender.musicalenderproject.domain;
+package Musicalendar.musicalendarproject.domain;
 
 import lombok.AccessLevel;
 import lombok.Builder;
