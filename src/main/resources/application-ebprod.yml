@@ -9,7 +9,7 @@ spring:
   jpa:
     #    show-sql: true
     properties:
-      hibernate.hbm2ddl.auto: update
+      hibernate.hbm2ddl.auto: create
     defer-datasource-initialization: true
 
 logging.level:
