@@ -30,8 +30,8 @@ public class ShowSchedule {
     private String date; //type 확인 필요
 
     @ElementCollection
-    @Enumerated(EnumType.STRING)
-    private List<Site> site=new ArrayList<>();;
+//    @Enumerated(EnumType.STRING)
+    private List<String> site=new ArrayList<>();;
 
     @ElementCollection
     @Column(length=1000)
@@ -43,7 +43,7 @@ public class ShowSchedule {
     private Show show;
 
     @Builder
-    public ShowSchedule(Boolean preCheck, String date, List<Site> site, List<String> image, Show show){
+    public ShowSchedule(Boolean preCheck, String date, List<String> site, List<String> image, Show show){
         this.preCheck = preCheck;
         this.date = date;
         this.site = site;
