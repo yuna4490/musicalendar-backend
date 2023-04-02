@@ -32,7 +32,7 @@ public class ShowService {
 
 //        // 로컬 테스트용
 //        readJsonFile("C:\\Users\\82102\\Desktop\\논병아리\\인크\\instagram_extract.json");
-        readJsonFile("instagram_extract.json");
+        readJsonFile("/instagram_extract.json");
     }
 
     public void readJsonFile(String filePath){
