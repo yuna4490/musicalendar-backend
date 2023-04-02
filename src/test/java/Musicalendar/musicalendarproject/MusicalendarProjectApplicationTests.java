@@ -1,10 +1,10 @@
-package Musicalender.musicalenderproject;
+package Musicalendar.musicalendarproject;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class MusicalenderProjectApplicationTests {
+class MusicalendarProjectApplicationTests {
 
 	@Test
 	void contextLoads() {
