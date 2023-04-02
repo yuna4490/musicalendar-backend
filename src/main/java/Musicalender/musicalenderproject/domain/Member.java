@@ -1,5 +1,6 @@
 package Musicalender.musicalenderproject.domain;
 
+import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -7,14 +8,14 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Getter
-@NoArgsConstructor
 @Entity
-@Table(name = "member")
+@Table
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "member_id", unique = true, nullable = false)
-    private Long member_id;
+    @Column(name = "member_id")
+    private Long id;
 
     @Column(length = 15, nullable = false)
     private String nickname;

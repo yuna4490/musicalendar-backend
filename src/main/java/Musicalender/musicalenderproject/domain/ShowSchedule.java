@@ -1,45 +1,50 @@
 package Musicalender.musicalenderproject.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Builder;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
-@NoArgsConstructor
 @Entity
-@Table(name = "showSchedule")
+@Table
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class ShowSchedule {
 
     @Id
+    @Column(name = "ss_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ss_id", unique = true, nullable = false)
-    private Long ss_id;
+    @JsonIgnore
+    private Long id;
 
     @Column(nullable = false)
     private Boolean preCheck;
 
-    @Column(length = 30, nullable = false)
-    private String title;
-
     @Column(length = 20, nullable = false)
     private String date; //type 확인 필요
 
+    @ElementCollection
     @Enumerated(EnumType.STRING)
-    private Site site;
+    private List<Site> site=new ArrayList<>();;
 
-    @Column(length = 200)
-    private String image;
+    @ElementCollection
+    @Column(length=1000)
+    private List<String> image=new ArrayList<>(); // add 시 nullPointException 방지
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
     @JoinColumn(name="show_id")
+    @JsonManagedReference
     private Show show;
 
     @Builder
-    public ShowSchedule(Boolean preCheck, String title, String date, Site site, String image, Show show){
+    public ShowSchedule(Boolean preCheck, String date, List<Site> site, List<String> image, Show show){
         this.preCheck = preCheck;
-        this.title = title;
         this.date = date;
         this.site = site;
         this.image = image;
