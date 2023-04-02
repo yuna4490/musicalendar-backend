@@ -1,6 +1,8 @@
 package Musicalender.musicalenderproject.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Builder;
@@ -8,15 +10,16 @@ import lombok.Builder;
 import javax.persistence.*;
 
 @Getter
-@NoArgsConstructor
 @Entity
-@Table(name = "show")
+@Table
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Show {
 
     @Id
+    @Column(name = "show_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "show_id", unique = true, nullable = false)
-    private Long show_id;
+    @JsonIgnore
+    private Long id;
 
     @Column(length = 30, nullable = false)
     private String title;
@@ -30,4 +33,8 @@ public class Show {
         this.category = category;
     }
 
+    @Override
+    public String toString(){
+        return "#"+id+" 타이틀: "+title;
+    }
 }
