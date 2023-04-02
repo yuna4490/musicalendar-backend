@@ -11,7 +11,7 @@ import javax.persistence.*;
 
 @Getter
 @Entity
-@Table
+@Table(name = "shows")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Show {
 
