@@ -1,4 +1,4 @@
-package Musicalender.musicalenderproject.domain;
+package Musicalendar.musicalendarproject.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
