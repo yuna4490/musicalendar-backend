@@ -1,4 +1,4 @@
-package Musicalender.musicalenderproject;
+package Musicalendar.musicalendarproject;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -7,7 +7,7 @@ import javax.annotation.PostConstruct;
 import java.util.TimeZone;
 
 @SpringBootApplication
-public class MusicalenderProjectApplication {
+public class MusicalendarProjectApplication {
 	@PostConstruct
 	public void started() {
 		//timezone UTC 셋팅
@@ -15,7 +15,7 @@ public class MusicalenderProjectApplication {
 	}
 	public static void main(String[] args) {
 
-		SpringApplication.run(MusicalenderProjectApplication.class, args);
+		SpringApplication.run(MusicalendarProjectApplication.class, args);
 
 	}
 
