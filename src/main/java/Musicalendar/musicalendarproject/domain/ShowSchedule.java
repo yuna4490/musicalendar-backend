@@ -37,7 +37,7 @@ public class ShowSchedule {
     @Column(length=1000)
     private List<String> image=new ArrayList<>(); // add 시 nullPointException 방지
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
     @JoinColumn(name="show_id")
     @JsonManagedReference
     private Show show;
