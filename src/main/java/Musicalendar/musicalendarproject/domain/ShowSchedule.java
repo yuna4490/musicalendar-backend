@@ -29,13 +29,26 @@ public class ShowSchedule {
     @Column(length = 20, nullable = false)
     private String date; //type 확인 필요
 
-    @ElementCollection
-//    @Enumerated(EnumType.STRING)
-    private List<String> site=new ArrayList<>();;
+//    @ElementCollection
+////    @Enumerated(EnumType.STRING)
+//    private List<String> site=new ArrayList<>();;
 
-    @ElementCollection
-    @Column(length=1000)
-    private List<String> image=new ArrayList<>(); // add 시 nullPointException 방지
+//    @ElementCollection
+//    @Column(length=1000)
+//    private List<String> image=new ArrayList<>(); // add 시 nullPointException 방지
+
+
+    // 값타입 컬렉션 -> 일대다 단방향
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name="ss_id")
+    @JsonManagedReference
+    private List<ImageEntity> image=new ArrayList<>();
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name="ss_id")
+    @JsonManagedReference
+    private List<SiteEntity> site=new ArrayList<>();
+
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
     @JoinColumn(name="show_id")
@@ -43,7 +56,7 @@ public class ShowSchedule {
     private Show show;
 
     @Builder
-    public ShowSchedule(Boolean preCheck, String date, List<String> site, List<String> image, Show show){
+    public ShowSchedule(Boolean preCheck, String date, List<SiteEntity> site, List<ImageEntity> image, Show show){
         this.preCheck = preCheck;
         this.date = date;
         this.site = site;
