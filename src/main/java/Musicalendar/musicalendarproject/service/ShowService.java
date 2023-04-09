@@ -1,9 +1,6 @@
 package Musicalendar.musicalendarproject.service;
 
-import Musicalendar.musicalendarproject.domain.Category;
-import Musicalendar.musicalendarproject.domain.Show;
-import Musicalendar.musicalendarproject.domain.ShowSchedule;
-import Musicalendar.musicalendarproject.domain.Site;
+import Musicalendar.musicalendarproject.domain.*;
 import Musicalendar.musicalendarproject.repository.ShowRepository;
 import Musicalendar.musicalendarproject.repository.ShowScheduleRepository;
 import lombok.RequiredArgsConstructor;
@@ -30,9 +27,9 @@ public class ShowService {
 
     public void saveTicketingData(){
 
-//        // 로컬 테스트용
-//        readJsonFile("C:\\Users\\82102\\Desktop\\논병아리\\인크\\instagram_extract.json");
-        readJsonFile("/var/current/instagram_extract.json");
+        // 로컬 테스트용
+        readJsonFile("C:\\Users\\82102\\Desktop\\논병아리\\인크\\instagram_extract.json");
+//        readJsonFile("/var/current/instagram_extract.json");
     }
 
     public void readJsonFile(String filePath){
@@ -53,7 +50,10 @@ public class ShowService {
 
     public void parsingData(JSONArray jsonArray){
 
-        List<String> img_list=new ArrayList<>();
+//        List<String> img_list=new ArrayList<>();
+        List<ImageEntity> img_list=new ArrayList<>();
+        List<SiteEntity> pre_site_list=new ArrayList<>();
+        List<SiteEntity> site_list=new ArrayList<>();
 
         // 데이터 파싱
         for (int i=0; i<jsonArray.size(); i++) {
@@ -62,20 +62,35 @@ public class ShowService {
             Category category = Category.valueOf((String) jsonObject.get("category"));
             String pre_rsv = (String) jsonObject.get("pre_rsv");
             String rsv = (String) jsonObject.get("rsv");
+//            List<String> pre_site = (List<String>) jsonObject.get("pre_site");
             List<String> pre_site = (List<String>) jsonObject.get("pre_site");
+            if (pre_site!=null){
+                for (Object ps : pre_site) {
+                    pre_site_list.add(new SiteEntity(((String) ps)));
+                }
+            }
+//            List<String> site = (List<String>) jsonObject.get("site");
             List<String> site = (List<String>) jsonObject.get("site");
+            if (site!=null){
+                for (Object s : site) {
+                    site_list.add(new SiteEntity(((String) s)));
+                }
+            }
             List<String> img = (List<String>) jsonObject.get("img");
             for (Object s : img) {
-                img_list.add((String) s);
+//                img_list.add((String) s);
+                img_list.add(new ImageEntity(((String) s)));
             }
 
             Show show=checkDuplicateTitle(title, category);
 
             if (pre_rsv!=null){
-                ShowSchedule preShowSchedule=new ShowSchedule(true, pre_rsv, pre_site, img, show);
+//                ShowSchedule preShowSchedule=new ShowSchedule(true, pre_rsv, pre_site, img, show);
+                ShowSchedule preShowSchedule=new ShowSchedule(true, pre_rsv, pre_site_list, img_list, show);
                 showScheduleRepository.save(preShowSchedule);
             } else{
-                ShowSchedule showSchedule=new ShowSchedule(false, rsv, site, img, show);
+//                ShowSchedule showSchedule=new ShowSchedule(false, rsv, site, img, show);
+                ShowSchedule showSchedule=new ShowSchedule(false, rsv, site_list, img_list, show);
                 showScheduleRepository.save(showSchedule);
             }
         }
