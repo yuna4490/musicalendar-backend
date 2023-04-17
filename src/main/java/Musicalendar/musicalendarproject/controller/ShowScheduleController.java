@@ -15,8 +15,9 @@ public class ShowScheduleController {
     private final ShowScheduleService showScheduleService;
 
     @GetMapping("/calendar")
-    public List<ShowSchedule> getAllSchedules(){
-        return showScheduleService.getShowSchedules();
+    public String getAllSchedules(){
+        showScheduleService.getShowSchedules();
+        return "성공";
     }
 
 
