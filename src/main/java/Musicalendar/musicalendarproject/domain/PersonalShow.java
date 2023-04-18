@@ -1,19 +1,22 @@
-package Musicalender.musicalenderproject.domain;
+package Musicalendar.musicalendarproject.domain;
 
+import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Getter
 @Entity
-@Table(name = "personalShow")
+@Table
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class PersonalShow {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ps_id", unique = true, nullable = false)
-    private Long ps_id;
+    @Column(name = "ps_id")
+    private Long id;
 
     @Column(length = 30, nullable = false)
     private String title;
