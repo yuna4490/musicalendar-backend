@@ -23,8 +23,8 @@ public class ShowScheduleController {
 //        return "성공";
 //    }
 
-    @GetMapping("/calendar/list")
-    public List<ShowSchedule> getAllSchedules2(){
+    @GetMapping("/calendar")
+    public List<ShowSchedule> getAllSchedules(){
         return showScheduleService.getShowSchedules();
     }
 
