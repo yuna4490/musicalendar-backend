@@ -14,11 +14,11 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ShowScheduleService {
 
-//    private final ShowScheduleRepository showScheduleRepository;
-//
-//    public List<ShowSchedule> getShowSchedules(){
-//        return showScheduleRepository.findAll();
-//    }
+    private final ShowScheduleRepository showScheduleRepository;
+
+    public List<ShowSchedule> getShowSchedules(){
+        return showScheduleRepository.findAll();
+    }
 
 
 

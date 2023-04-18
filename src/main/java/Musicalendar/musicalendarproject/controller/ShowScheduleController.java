@@ -17,15 +17,15 @@ public class ShowScheduleController {
     private final ShowScheduleService showScheduleService;
     private final ShowScheduleRepository showScheduleRepository;
 
-    @GetMapping("/calendar")
-    public String getAllSchedules(){
-        showScheduleRepository.findAll();
-        return "성공";
-    }
+//    @GetMapping("/calendar")
+//    public String getAllSchedules(){
+//        showScheduleRepository.findAll();
+//        return "성공";
+//    }
 
     @GetMapping("/calendar/list")
     public List<ShowSchedule> getAllSchedules2(){
-        return showScheduleRepository.findAll();
+        return showScheduleService.getShowSchedules();
     }
 
 
