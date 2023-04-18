@@ -1,6 +1,7 @@
 package Musicalendar.musicalendarproject.controller;
 
 import Musicalendar.musicalendarproject.domain.ShowSchedule;
+import Musicalendar.musicalendarproject.repository.ShowScheduleRepository;
 import Musicalendar.musicalendarproject.service.ShowScheduleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -14,16 +15,17 @@ import java.util.List;
 public class ShowScheduleController {
 
     private final ShowScheduleService showScheduleService;
+    private final ShowScheduleRepository showScheduleRepository;
 
     @GetMapping("/calendar")
     public String getAllSchedules(){
-        showScheduleService.getShowSchedules();
+        showScheduleRepository.findAll();
         return "성공";
     }
 
     @GetMapping("/calendar/list")
-    public ResponseEntity<List<ShowSchedule>> getAllSchedules2(){
-        return ResponseEntity.ok(showScheduleService.getShowSchedules());
+    public List<ShowSchedule> getAllSchedules2(){
+        return showScheduleRepository.findAll();
     }
 
 
