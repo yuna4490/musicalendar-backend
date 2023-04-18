@@ -39,16 +39,15 @@ public class ShowSchedule {
 
 
     // 값타입 컬렉션 -> 일대다 단방향
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     @JoinColumn(name="ss_id")
     @JsonManagedReference
     private List<ImageEntity> image=new ArrayList<>();
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     @JoinColumn(name="ss_id")
     @JsonManagedReference
     private List<SiteEntity> site=new ArrayList<>();
-
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
     @JoinColumn(name="show_id")
