@@ -10,7 +10,9 @@ import lombok.Builder;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Entity
@@ -43,11 +45,13 @@ public class ShowSchedule {
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     @JoinColumn(name="ss_id")
 //    @JsonBackReference //이거 JsonManagedReference로 해서 에러 떴었음
-    private List<ImageEntity> image=new ArrayList<>();
+//    private List<ImageEntity> image=new ArrayList<>();
+    private Set<ImageEntity> image = new HashSet<>();
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-    @JoinColumn(name="ss_id")
-    private List<SiteEntity> site=new ArrayList<>();
+    @JoinColumn(name = "ss_id")
+//    private List<SiteEntity> site=new ArrayList<>();
+    private Set<SiteEntity> site = new HashSet<>();
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
     @JoinColumn(name="show_id")
@@ -58,8 +62,8 @@ public class ShowSchedule {
     public ShowSchedule(Boolean preCheck, String date, List<SiteEntity> site, List<ImageEntity> image, Show show){
         this.preCheck = preCheck;
         this.date = date;
-        this.site = site;
-        this.image = image;
+        this.site = (Set<SiteEntity>) site;
+        this.image = (Set<ImageEntity>) image;
         this.show = show;
     }
 }
