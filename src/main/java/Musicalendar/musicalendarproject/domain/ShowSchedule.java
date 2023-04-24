@@ -51,7 +51,7 @@ public class ShowSchedule {
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
     @JoinColumn(name="show_id")
-    @JsonManagedReference
+//    @JsonManagedReference
     private Show show;
 
     @Builder
