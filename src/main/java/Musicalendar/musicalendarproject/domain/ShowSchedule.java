@@ -49,9 +49,9 @@ public class ShowSchedule {
 //    @JsonManagedReference
 //    private List<SiteEntity> site=new ArrayList<>();
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
+    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
     @JoinColumn(name="show_id")
-//    @JsonManagedReference
+    @JsonManagedReference
     private Show show;
 
     @Builder
