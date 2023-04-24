@@ -1,5 +1,6 @@
 package Musicalendar.musicalendarproject.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AccessLevel;
@@ -41,12 +42,12 @@ public class ShowSchedule {
 //     값타입 컬렉션 -> 일대다 단방향
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name="ss_id")
-    @JsonManagedReference
+    @JsonBackReference
     private List<ImageEntity> image=new ArrayList<>();
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name="ss_id")
-    @JsonManagedReference
+    @JsonBackReference
     private List<SiteEntity> site=new ArrayList<>();
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
@@ -58,8 +59,8 @@ public class ShowSchedule {
     public ShowSchedule(Boolean preCheck, String date, List<SiteEntity> site, List<ImageEntity> image, Show show){
         this.preCheck = preCheck;
         this.date = date;
-//        this.site = site;
-//        this.image = image;
+        this.site = site;
+        this.image = image;
         this.show = show;
     }
 }
