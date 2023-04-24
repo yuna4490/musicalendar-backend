@@ -38,16 +38,16 @@ public class ShowSchedule {
 //    private List<String> image=new ArrayList<>(); // add 시 nullPointException 방지
 
 
-    // 값타입 컬렉션 -> 일대다 단방향
-//    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-//    @JoinColumn(name="ss_id")
-//    @JsonManagedReference
-//    private List<ImageEntity> image=new ArrayList<>();
-//
-//    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-//    @JoinColumn(name="ss_id")
-//    @JsonManagedReference
-//    private List<SiteEntity> site=new ArrayList<>();
+//     값타입 컬렉션 -> 일대다 단방향
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name="ss_id")
+    @JsonManagedReference
+    private List<ImageEntity> image=new ArrayList<>();
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name="ss_id")
+    @JsonManagedReference
+    private List<SiteEntity> site=new ArrayList<>();
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
     @JoinColumn(name="show_id")
