@@ -42,12 +42,11 @@ public class ShowSchedule {
 //     값타입 컬렉션 -> 일대다 단방향
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name="ss_id")
-    @JsonBackReference
+//    @JsonBackReference //이거 JsonManagedReference로 해서 에러 떴었음
     private List<ImageEntity> image=new ArrayList<>();
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name="ss_id")
-    @JsonBackReference
     private List<SiteEntity> site=new ArrayList<>();
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
