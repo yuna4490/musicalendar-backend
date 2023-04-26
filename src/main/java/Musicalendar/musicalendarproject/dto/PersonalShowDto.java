@@ -16,15 +16,15 @@ public class PersonalShowDto {
     private String title;
     private Site site;
     private String date;
-    private Member member;
+//    private Member member;
 
 
     @Builder
-    public PersonalShowDto(String title, String date, Site site, Member member){
+    public PersonalShowDto(String title, String date, Site site){
         this.title = title;
         this.date = date;
         this.site = site;
-        this.member = member;
+//        this.member = member;
     }
 
     public PersonalShow toEntity(){
@@ -32,7 +32,7 @@ public class PersonalShowDto {
                 .title(title)
                 .site(site)
                 .date(date)
-                .member(member)
+//                .member(member)
                 .build();
     }
 }
