@@ -2,11 +2,11 @@ package Musicalendar.musicalendarproject.controller;
 
 import Musicalendar.musicalendarproject.domain.Show;
 import Musicalendar.musicalendarproject.domain.ShowSchedule;
+import Musicalendar.musicalendarproject.dto.PersonalShowDto;
 import Musicalendar.musicalendarproject.repository.ShowScheduleRepository;
 import Musicalendar.musicalendarproject.service.ShowScheduleService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -33,5 +33,9 @@ public class ShowScheduleController {
         return showScheduleService.getShows();
     }
 
+    @PostMapping("/calendar")
+    public Long saveSchedule(@RequestBody PersonalShowDto personalShowDto){
+        return showScheduleService.saveSchedule(personalShowDto);
+    }
 
 }
