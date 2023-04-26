@@ -1,5 +1,6 @@
 package Musicalendar.musicalendarproject.service;
 
+import Musicalendar.musicalendarproject.domain.PersonalShow;
 import Musicalendar.musicalendarproject.domain.Show;
 import Musicalendar.musicalendarproject.domain.ShowSchedule;
 import Musicalendar.musicalendarproject.dto.PersonalShowDto;
@@ -32,6 +33,10 @@ public class ShowScheduleService {
 
     public Long saveSchedule(PersonalShowDto personalShowDto){
         return personalShowRepository.save(personalShowDto.toEntity()).getId();
+    }
+
+    public List<PersonalShow> getPersonalShows() {
+        return personalShowRepository.findAll();
     }
 
 
