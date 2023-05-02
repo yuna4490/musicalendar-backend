@@ -1,0 +1,10 @@
+jwt:
+  secretKey: dfaoOIe3dl390WIQOVbd3dfiIIfm2orjf013ri0d
+
+  access:
+    expiration: 3600000 # 1시간
+    header: Authorization
+
+  refresh:
+    expiration: 120960000 # 2주
+    header: Authorization-refresh
