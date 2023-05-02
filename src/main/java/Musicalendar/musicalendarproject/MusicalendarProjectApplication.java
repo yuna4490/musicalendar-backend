@@ -2,10 +2,14 @@ package Musicalendar.musicalendarproject;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 import javax.annotation.PostConstruct;
 import java.util.TimeZone;
 
+@EnableCaching
+@EnableJpaAuditing // JPA Auditing 활성화
 @SpringBootApplication
 public class MusicalendarProjectApplication {
 	@PostConstruct

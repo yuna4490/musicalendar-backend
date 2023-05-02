@@ -17,24 +17,43 @@ public class Member {
     @Column(name = "member_id")
     private Long id;
 
+//    @Column(length = 15, nullable = false, unique = true)
+//    private String username;
+
     @Column(length = 15, nullable = false)
     private String nickname;
 
-    @Column(length = 100, nullable = false)
+    @Column(length = 100, nullable = false, unique = true)
     private String email;
 
-    @Column(length = 50, nullable = false)
-    private String password;
+    private String provider;    //  구글? 카카오?
+    private String provideId;   //  해당 소셜 상의 아이디
 
-    @Column(length = 20, nullable = false)
-    private String phoneNumber;
+//    @Column(length = 50, nullable = false)
+//    private String password;
+//
+//    @Column(length = 20, nullable = false)
+//    private String phoneNumber;
+
+    @Enumerated(EnumType.STRING)
+    private Authority authority;
+
+    public Member update(String nickname){
+        this.nickname=nickname;
+
+        return this;
+    }
 
     @Builder
-    public Member(String nickname, String email, String password, String phoneNumber){
+    public Member(String nickname, String email, String provider, String provideId, Authority authority){
+//        this.username=username;
         this.nickname = nickname;
         this.email = email;
-        this.password = password;
-        this.phoneNumber = phoneNumber;
+        this.provider=provider;
+        this.provideId=provideId;
+        this.authority=authority;
+//        this.password = password;
+//        this.phoneNumber = phoneNumber;
     }
 
 
